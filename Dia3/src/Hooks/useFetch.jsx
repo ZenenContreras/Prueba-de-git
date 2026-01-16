@@ -26,7 +26,7 @@ function useFetch(url, options = {}) {
                 setData(null)
 
             } finally{
-                setLoading(false)
+                setLoading(false) 
             }
         }   
         fetchData()
