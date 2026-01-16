@@ -19,7 +19,7 @@ function App() {
           Nuestros Usuarios
         </h1>
 
-        <input type="text" className='border-2 border-gray-400 mb-8 py-2 px-4 rounded shadow text-black' placeholder='Search users' onChange={(e)=> setInputText(e.target.value)}/>
+        <input type="text" className='border-2 border-gray-400 mb-8 py-2 px-4 rounded-lg shadow text-black' placeholder='Search users' onChange={(e)=> setInputText(e.target.value)}/>
 
         {loading && (
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
