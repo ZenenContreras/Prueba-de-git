@@ -7,10 +7,8 @@ function App() {
   const { data, loading, errorMessage } = useFetch('https://jsonplaceholder.typicode.com/users');
 
   const [inputText, setInputText] = useState('')
-  console.log(inputText)
 
   const filterData = data?.filter((item)=> item.name.toLowerCase().includes(inputText.toLowerCase()) || item.email.toLowerCase().includes(inputText.toLowerCase())) || []
-  console.log(filterData)
 
   return (
     <main className="min-h-screen bg-gray-50 p-8">
