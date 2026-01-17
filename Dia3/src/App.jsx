@@ -1,10 +1,12 @@
 import useFetch from './Hooks/useFetch';
-import ProductCard from './components/ProductCard'; // El que vas a crear
-import SkeletonCard from './components/SkeletonCard';
+import ProductCard from './components/features/users/ProductCard'; // El que vas a crear
+import SkeletonCard from './components/common/SkeletonCard';
 import { useState } from 'react';
+import UserList from './components/features/users/UserList';
+import { API_BASE_URL } from './services/api';
 
 function App() {
-  const { data, loading, errorMessage } = useFetch('https://jsonplaceholder.typicode.com/users');
+  const { data, loading, errorMessage } = useFetch(API_BASE_URL);
 
   const [inputText, setInputText] = useState('')
 
@@ -31,11 +33,7 @@ function App() {
           <h2 className='text-red-700'>There is an error: {errorMessage}</h2>
         )}
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {filterData && filterData.map(user =>(
-            <ProductCard user={user} key={user.id}/>
-          ))}
-        </div>
+        <UserList filterData={filterData} />
       
       </div>
     </main>
