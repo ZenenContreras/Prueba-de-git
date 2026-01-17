@@ -1,9 +1,8 @@
-import useFetch from './Hooks/useFetch';
-import ProductCard from './components/features/users/ProductCard'; // El que vas a crear
-import SkeletonCard from './components/common/SkeletonCard';
+import useFetch from '@/Hooks/useFetch';
+import SkeletonCard from '@/components/common/SkeletonCard';
 import { useState } from 'react';
-import UserList from './components/features/users/UserList';
-import { API_BASE_URL } from './services/api';
+import UserList from '@/components/features/users/UserList';
+import { API_BASE_URL } from '@/services/api';
 
 function App() {
   const { data, loading, errorMessage } = useFetch(API_BASE_URL);
