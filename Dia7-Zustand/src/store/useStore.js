@@ -1,6 +1,7 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-export const useStore = create((set)=>({
+export const useStore = create(persist((set)=>({
     //Estado usuario
 
     user:{
@@ -37,4 +38,8 @@ export const useStore = create((set)=>({
         set(()=>({
             projects: []
         }))
-}))
+}),
+    {
+        name: 'dev-tracker-storage',
+    }
+))
