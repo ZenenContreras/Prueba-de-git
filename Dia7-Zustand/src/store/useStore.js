@@ -1,7 +1,8 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { devtools } from 'zustand/middleware'
 
-export const useStore = create(persist((set)=>({
+export const useStore = create(
+        devtools((set)=>({
     //Estado usuario
 
     user:{
@@ -11,8 +12,10 @@ export const useStore = create(persist((set)=>({
 
     //Estado proyectos
     projects: [
-        {id: 1, title: 'Mi primera app de zustand' , favorite: false},
+        {id: 1111, title: 'Mi primera app de zustand' , favorite: false},
     ],
+
+    loading: false,
 
     //Acciones
     updateName: (newName) =>
@@ -23,7 +26,7 @@ export const useStore = create(persist((set)=>({
     addProject: (title) => 
         set((state) => ({
             projects: [...state.projects , {id: Date.now(), title, favorite: false}]
-        })),
+        })),  
 
     deleteProject: (id) =>
         set((state)=> ({
@@ -37,9 +40,24 @@ export const useStore = create(persist((set)=>({
     clearProjects: () => 
         set(()=>({
             projects: []
-        }))
-}),
-    {
-        name: 'dev-tracker-storage',
+        })),
+
+    fetchUsers: async () => {
+        set({loading: true})
+
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/users')
+            const data = await response.json()
+
+            set((state)=>({
+                projects: [...state.projects, ...data.map(user => ({id: user.id, title: user.name, favorite: false}))]
+            }))
+            
+        } catch (error) {
+            console.error('Error Fetching data: ', error)
+             
+        }finally{
+            set({loading: false})
+        }
     }
-))
+})))
