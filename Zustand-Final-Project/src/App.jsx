@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import { NavBar } from './components/NavBar'
-import Login from './pages/Login'
+import Login from './pages/auth/Login'
 
 function App() {
 

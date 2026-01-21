@@ -1,12 +1,24 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+import {signUp, logIn, logOut} from '../services/authService'
 
 
 export const useAuthStore = create(persist((set)=>({
 
     user: null,
-    token: null,
+    loading: false,
 
-    logIn: (userData, token) => set({user: userData, token}),
+    logIn: async (userData) => {
+        set({loading: true})
+        try{
+            const data = await logIn(userData)
+             
+        }catch{
+
+        }finally{
+            set({loading: false})
+        }
+    },
 
     logOut: () => {
         set({user: null, token: null});
