@@ -1,12 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router'
+import useAuthStore from '../store/useAuthStore'
 
 function Login() {
+
+    const {logIn } = useAuthStore()
+
+    function handleSubmit (){
+        e.preventDefault()
+        logIn()
+    }
+
   return (
     <section className='flex flex-col items-center p-12 gap-6'>
         <h2 className='text-3xl text-white font-bold'>Welcome Back</h2>
         <h3 className='text-lg text-gray-400'>Manage your private projects with ease</h3>
-        <form action="" className='flex flex-col text-white border-[#324d67] border p-8 rounded-lg bg-[#192633] gap-6 md:w-[440px]'>
+        <form onSubmiy={handleSubmit} className='flex flex-col text-white border-[#324d67] border p-8 rounded-lg bg-[#192633] gap-6 md:w-[440px]'>
             <div className='flex flex-col gap-4'>
                 <label htmlFor="">Email Address: </label>
                 <input type="text" placeholder='name@example.com' className='py-2 px-4 bg-[#111a22] rounded-lg border-slate-300 text-white'/>
@@ -18,7 +27,7 @@ function Login() {
                 </div>
                 <input type="password" name="" id="" className='py-2 px-4 bg-[#111a22] rounded-lg border-slate-300 text-white' placeholder='********'/>
             </div>
-            <button className='py-2 px-4 bg-[#137fec] rounded-lg cursor-pointer'>Log In</button>
+            <button type='submit' className='py-2 px-4 bg-[#137fec] rounded-lg cursor-pointer'><Link to='/dashboard'> Log In </Link></button>
             <div className='flex items-center gap-2'>
                 <span className='w-full h-px bg-gray-500'></span>
                 <span className='text-gray-500 text-sm whitespace-nowrap'>PRIVATE INSTANCE</span>
