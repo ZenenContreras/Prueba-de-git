@@ -11,23 +11,33 @@ function DashboardNavbar () {
     const user = useAuthStore((state) => state.user)
     const logOut = useAuthStore((state)=> state.logOut)
     return (
-        <aside className='min-h-screen flex flex-col w-64 items-center border-r border-gray-700'>
+        <aside className='min-h-screen flex flex-col items-center border-r border-gray-700'>
             <div className='w-full flex-1'>
-                <div className='flex gap-4 items-center mb-8 py-6 px-4 text-[#137fec] '>
-                    <DashboardRoundedIcon fontSize='large' />
-                    <Link to='/dashboard' className='font-bold text-2xl'>Focus</Link>
+                <div className='flex gap-4 items-center mb-4 py-6 px-4 text-white '>
+                    <div className='bg-[#137fec] p-1 rounded-lg'>
+                        <DashboardRoundedIcon fontSize='large' />
+                    </div>
+                    <Link to='/dashboard' className='font-bold text-2xl text-white'>Focus</Link>
                 </div>
 
-                <ul className='flex flex-col gap-4 '>
-                    <Link to='/dashboard/projects' className='text-md flex items-center gap-2 hover:text-[#137fec] hover:bg-[#137fec10] py-3 px-4 rounded-lg hover:cursor-pointer'><GridViewRoundedIcon/> Projects</Link>
-                    <li className=' text-md flex items-center gap-2 hover:text-[#137fec] hover:bg-[#137fec10] py-2 px-4 rounded-lg hover:cursor-pointer'><Person4RoundedIcon/> Profile</li>
-                    <li className=' text-md flex items-center gap-2 hover:text-[#137fec] hover:bg-[#137fec10] py-2 px-4 rounded-lg hover:cursor-pointer'><SettingsIcon/> Settings</li>
+                <ul className='flex flex-col'>
+                    <Link to='/dashboard/projects' className='text-md flex items-center gap-2 hover:text-[#137fec] hover:bg-[#137fec10] py-4 px-4 rounded-lg hover:cursor-pointer'><GridViewRoundedIcon/> Projects</Link>
+
+                    <li className=' text-md flex items-center gap-2 hover:text-[#137fec] hover:bg-[#137fec10] py-4 px-4 rounded-lg hover:cursor-pointer'><Person4RoundedIcon/> Profile</li>
+
+                    <li className=' text-md flex items-center gap-2 hover:text-[#137fec] hover:bg-[#137fec10] py-4 px-4 rounded-lg hover:cursor-pointer'><SettingsIcon/> Settings</li>
                 </ul>
             </div>
 
-            <div className='py-6 px-4 w-full flex gap-4'>
-                <div>
-                    <h2>{user.email}</h2>
+            <div className='py-6 px-4 w-full flex gap-4 justify-center border-t border-gray-700'>
+                <img
+                    src="https://api.dicebear.com/9.x/big-ears-neutral/svg?seed=Destiny"
+                    alt="avatar" 
+                    className='w-6 '    
+                />
+                <div className='flex flex-col items-center'>
+                    <h2 className='text-xs font-bold'>{user.email.split('@')[0]}</h2>
+                    <h3 className='text-xs text-gray-400'>Free Acount</h3>
                 </div>
                 <button onClick={logOut} className='cursor-pointer text-[#137fec] '> 
                     <LogoutIcon />
