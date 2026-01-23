@@ -8,6 +8,9 @@ import Register from './pages/auth/Register.jsx';
 import ProtetedLayout from './components/layout/ProtetedLayout.jsx'
 import DashBoard from './pages/dashboard/DashBoard.jsx';
 import Projects from './pages/projects/Projects.jsx'
+import CreateProject from './pages/projects/CreateProject.jsx'
+
+
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <div className='bg-[#1a2a37] min-h-screen text-white'>
@@ -24,6 +27,7 @@ createRoot(document.getElementById('root')).render(
         <Route element={<ProtetedLayout />}>
           <Route path='/dashboard' element={<DashBoard />}></Route>
           <Route path='/dashboard/projects' element={<Projects />}></Route>
+          <Route path='/dashboard/projects/create' element={<CreateProject />}></Route>
         </Route>
 
       </Routes>

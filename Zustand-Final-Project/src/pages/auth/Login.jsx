@@ -61,7 +61,7 @@ function Login() {
         
                 <div className='flex items-center gap-2'>
                     <span className='w-full h-px bg-gray-500'></span>
-                    <span className='text-gray-500 text-sm whitespace-nowrap'>PRIVATE INSTANCE</span>
+                    <span className='text-gray-500 text-xs md:text-sm whitespace-nowrap'>PRIVATE INSTANCE</span>
                     <span className='w-full h-px bg-gray-500'></span>
                 </div>
 

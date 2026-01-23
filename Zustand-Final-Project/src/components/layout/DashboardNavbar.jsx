@@ -29,7 +29,7 @@ function DashboardNavbar () {
                 </ul>
             </div>
 
-            <div className='py-6 px-4 w-full flex gap-4 justify-center border-t border-gray-700'>
+            <div className='py-6 px-6 w-full flex gap-2 justify-center border-t border-gray-700'>
                 <img
                     src="https://api.dicebear.com/9.x/big-ears-neutral/svg?seed=Destiny"
                     alt="avatar" 

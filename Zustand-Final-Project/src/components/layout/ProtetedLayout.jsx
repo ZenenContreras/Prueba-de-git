@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router'
 import { useAuthStore } from '../../store/useAuthStore'
 import DashboardNavbar from './DashboardNavbar'
+import ProjectNavbar from './ProjectNavbar'
 
 function ProtetedLayout() {
     const token = useAuthStore((state) => state.token)
@@ -11,7 +12,10 @@ function ProtetedLayout() {
     return (
         <div className='flex'>
             <DashboardNavbar />
-            <Outlet />
+            <div className='flex flex-col w-full '>
+                <ProjectNavbar />
+                <Outlet />
+            </div>
         </div>
     )
 }
