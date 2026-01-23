@@ -7,14 +7,15 @@ import {useAuthStore} from '../../store/useAuthStore'
 function Register() {
     const [emailInput, setUserEmail] = useState('')
     const [passwordInput, setUserPassword] = useState('')
+    const [nameInput, setUserName] = useState('')
     const { signUp } = useAuthStore()
     const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        if (emailInput && passwordInput) {
-            signUp(emailInput, passwordInput)
+        if (emailInput && passwordInput && nameInput) {
+            signUp(emailInput, passwordInput, nameInput)
             navigate('/login')
         } else {
             alert('Fill in all fields')
@@ -22,21 +23,26 @@ function Register() {
     }
 
     return (
-        <section className='flex flex-col items-center p-12 gap-6'>
+        <section className='flex flex-col items-center p-12 gap-6 animate-fade-in'>
             <h2 className='text-3xl text-white font-bold'>Register</h2>
             <h3 className='text-lg text-gray-400'>Manage your private projects with ease</h3>
-            <form onSubmit={handleSubmit} className='flex flex-col text-white border-[#324d67] border p-8 rounded-lg bg-[#192633] gap-6 md:w-[440px]'>
+            <form onSubmit={handleSubmit} className='flex flex-col  border-[#324d67] border p-8 rounded-lg bg-[#192633] gap-6 md:w-[440px]'>
+
+                <div className='flex flex-col gap-4'>
+                    <label htmlFor="">Full Name: </label>
+                    <input type="text" placeholder='Jhon Doe' className='rounded-lg border border-gray-700 bg-gray-900 px-5 py-3' onChange={(e) => setUserName(e.target.value)} required />
+                </div>
 
                 <div className='flex flex-col gap-4'>
                     <label htmlFor="">Email Address: </label>
-                    <input type="text" placeholder='name@example.com' className='py-2 px-4 bg-[#111a22] rounded-lg border-slate-300 text-white' onChange={(e) => setUserEmail(e.target.value)} required />
+                    <input type="text" placeholder='jhondoe@example.com'className='rounded-lg border border-gray-700 bg-gray-900 px-5 py-3' onChange={(e) => setUserEmail(e.target.value)} required />
                 </div>
 
                 <div className='flex flex-col gap-4'>
                     <div className='flex justify-between items-center'>
                         <label htmlFor="">Password</label>
                     </div>
-                    <input type="password" required className='py-2 px-4 bg-[#111a22] rounded-lg border-slate-300 text-white' placeholder='********' onChange={(e) => setUserPassword(e.target.value)} />
+                    <input type="password" required className='rounded-lg border border-gray-700 bg-gray-900 px-5 py-3' placeholder='********' onChange={(e) => setUserPassword(e.target.value)} />
                 </div>
 
                 <button type='submit' className='py-2 px-4 bg-[#137fec] rounded-lg cursor-pointer'> Sign Up </button>
@@ -54,7 +60,7 @@ function Register() {
                 </div>
             </form>
 
-            <p className='text-sm text-gray-500 text-center'>© 2024 PrivateProject. All rights reserved. <br />
+            <p className='text-sm text-gray-500 text-center'>© 2026 PrivateProject. All rights reserved. <br />
                 Secure, encrypted project management for private teams.
             </p>
         </section>

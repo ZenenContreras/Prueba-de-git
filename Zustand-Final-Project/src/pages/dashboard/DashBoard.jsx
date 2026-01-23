@@ -1,8 +1,18 @@
-import { useAuthStore } from '../../store/useAuthStore'
-import DashboardNavbar from '../../components/layout/DashboardNavbar'
-import Projects from '../projects/Projects'
+import { useProjectStore } from '../../store/useProjectStore'
+import {useEffect} from 'react'
 
 function DashBoard() {
+
+    const {getProjects, projects} = useProjectStore()
+
+    console.log(projects)
+
+    useEffect(()=>{
+        async function fetchProyects(){
+            await getProjects()
+        }
+        fetchProyects()
+    },[])
 
     return (
         <>

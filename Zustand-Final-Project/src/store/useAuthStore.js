@@ -10,11 +10,11 @@ export const useAuthStore = create(persist((set)=>({
     error: null,
     token: null,
 
-    signUp: async (email, password) => {
+    signUp: async (email, password, name) => {
         set({loading: true, error: null})
 
         try{
-            const data = await signUp(email, password)
+            const data = await signUp(email, password, name)
         }catch(error){
             set({error: error.message})
             throw error

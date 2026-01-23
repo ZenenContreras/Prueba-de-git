@@ -27,14 +27,14 @@ function Login() {
     }
 
     return (
-        <section className='flex flex-col items-center p-12 gap-4'>
+        <section className='flex flex-col items-center p-12 gap-4 animate-fade-in duration-75'>
             <h2 className='text-3xl text-white font-bold'>Welcome Back</h2>
             <h3 className='text-lg text-gray-400'>Manage your private projects with ease</h3>
             <form onSubmit={handleSubmit} className='flex flex-col text-white border-[#324d67] border p-8 rounded-lg bg-[#192633] gap-6 md:w-[440px]'>
 
                 <div className='flex flex-col gap-4'>
                     <label htmlFor="">Email Address: </label>
-                    <input type="text" placeholder='name@example.com' className='py-2 px-4 bg-[#111a22] rounded-lg border-slate-300 text-white' onChange={(e) => setUserEmail(e.target.value)} required />
+                    <input type="text" placeholder='name@example.com' className='rounded-lg border border-gray-700 bg-gray-900 px-5 py-3' onChange={(e) => setUserEmail(e.target.value)} required />
                 </div>
 
                 <div className='flex flex-col gap-4'>
@@ -42,16 +42,16 @@ function Login() {
                         <label htmlFor="">Password</label>
                         <a href="" className='text-[#137fec] text-sm '><span>Forgot?</span> </a>
                     </div>
-                    <input type="password" required className='py-2 px-4 bg-[#111a22] rounded-lg border-slate-300 text-white' placeholder='********' onChange={(e) => setUserPassword(e.target.value)} />
+                    <input type="password" required className='rounded-lg  bg-gray-900 px-5 py-3' placeholder='********' onChange={(e) => setUserPassword(e.target.value)} />
                 </div>
 
                 <button 
                 type='submit' 
-                className='relative py-2 px-4 bg-[#137fec] rounded-lg cursor-pointer'
+                className='relative bg-[#137fec] px-5 py-3 rounded-lg shadow-xl cursor-pointer '
                 disabled={loading}
                 >
                 {loading ? 'Loading...' : 'Log In '}
-                {loading && <div className='absolute top-3 right-3 animate-spin rounded-full h-4 w-4 border-t-3 border-white'></div>} 
+                {loading && <div className='absolute top-[35%] right-4 animate-spin rounded-full h-4 w-4 border-t-3 border-white'></div>} 
                 </button>
 
                 {error && (

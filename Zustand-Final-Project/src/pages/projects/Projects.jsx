@@ -1,6 +1,10 @@
+import ProjectLayout from '../../components/features/projects/ProyectLayout'
+
 function Projects (){
     return (
-        <div>Projects</div>
+        <div className='flex flex-col p-6 animate-fade-in'>
+            <ProjectLayout />
+        </div>
     )
 }
 

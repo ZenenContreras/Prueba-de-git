@@ -1,5 +1,5 @@
 import {create} from 'zustand'
-import {createProject, getProjects} from '../services/projectService'
+import {createProject, getProjectsService} from '../services/projectService'
 
 export const useProjectStore = create((set)=>({
 
@@ -7,10 +7,10 @@ export const useProjectStore = create((set)=>({
     error: null,
     loading: false,
 
-    getProyects: async () =>{
+    getProjects: async () =>{
         set({loading: true})
         try{
-            const data = await getProjects()
+            const data = await getProjectsService()
             set({projects: data})
         }catch(error){
             set({error: error})
