@@ -6,7 +6,7 @@ export const createProject = async (projectData) => {
             title: projectData.title,
             description: projectData.description,
             due_date: projectData.due_date,
-            completed: false
+            completed: projectData.completed
         }
     ]).select()
     if (error) throw error

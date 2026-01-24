@@ -10,6 +10,7 @@ function DashboardNavbar () {
 
     const user = useAuthStore((state) => state.user)
     const logOut = useAuthStore((state)=> state.logOut)
+    
     return (
         <aside className='min-h-screen flex flex-col items-center border-r border-gray-700'>
             <div className='w-full flex-1'>
@@ -33,11 +34,11 @@ function DashboardNavbar () {
                 <img
                     src="https://api.dicebear.com/9.x/big-ears-neutral/svg?seed=Destiny"
                     alt="avatar" 
-                    className='w-6 '    
+                    className='w-8 rounded-full'    
                 />
                 <div className='flex flex-col items-center'>
                     <h2 className='text-xs font-bold'>{user.user_metadata.full_name.split(' ',[2])}</h2>
-                    
+                    <h3 className='text-xs text-gray-500'>Free Account</h3>
                 </div>
                 <button onClick={logOut} className='cursor-pointer text-[#137fec] '> 
                     <LogoutIcon />
