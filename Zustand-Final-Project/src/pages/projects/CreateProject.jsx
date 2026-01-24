@@ -7,6 +7,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import {useState} from 'react'
 import {useProjectStore} from '../../store/useProjectStore'
 import {useNavigate} from 'react-router'
+import confetti from 'canvas-confetti'
 
 function CreateProject() {
 
@@ -29,6 +30,7 @@ function CreateProject() {
 
         try{
             await createProject(projectData)
+            confetti()
             setProjectData( {title: '', description: '', due_Date: '', completed: false })
             navigate('/dashboard/projects')
         }catch(err){
