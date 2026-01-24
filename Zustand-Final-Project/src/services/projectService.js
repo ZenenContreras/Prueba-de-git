@@ -19,3 +19,9 @@ export const getProjectsService = async () => {
     if(error) throw error
     return data
 }
+
+export const deleteProject = async (proyectId) => {
+    const {data, error} = await supabase.from('projects').delete().eq('id', proyectId)
+    if(error) throw error
+    return data
+}

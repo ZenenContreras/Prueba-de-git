@@ -6,7 +6,7 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 function ProjectLayout () {
-    const {getProjects, projects} = useProjectStore()
+    const {getProjects, projects, deleteProject} = useProjectStore()
     
     useEffect(()=>{
          async function fetchProyects(){
@@ -19,7 +19,7 @@ function ProjectLayout () {
     return (
         <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols:3 lg:grid-cols-4'>
             {projects && projects.map((project) =>(
-                <Link className=' flex flex-col gap-4 bg-gray-900 p-4 rounded-lg shadow-xl border border-gray-700 hover:border-[#137fec] duration-200' key={project.id} >
+                <div className=' flex flex-col gap-4 bg-gray-900 p-4 rounded-lg shadow-xl border border-gray-700 hover:border-[#137fec] duration-200' key={project.id} >
                     <div className='border-b pb-4 border-gray-500 flex flex-col  gap-4 flex-1'>
                         <div className='flex flex-row justify-between items-center'>
                             <h2 className='font-bold text-xl'>{project.title}</h2>
@@ -31,7 +31,8 @@ function ProjectLayout () {
                             <h2 className='uppercase text-sm text-gray-500'>Due Date</h2>
                             <h3 className=' text-sm'>{project.due_date}</h3>
                     </div>
-                </Link>
+                    <button onClick={()=> deleteProject(project.id)} className='px-5 py-3 rounded-lg shadow-xl cursor-pointer bg-red-400'>Delete Proyect</button>
+                </div>
             ))}
             <Link to='create' className='border-gray-500 border-2 border-dashed p-12 rounded-lg flex flex-col items-center justify-center font-bold gap-2'> 
                 <AddCircleIcon/>
