@@ -8,6 +8,7 @@ import {useState} from 'react'
 import {useProjectStore} from '../../store/useProjectStore'
 import {useNavigate} from 'react-router'
 import confetti from 'canvas-confetti'
+import toast from 'react-hot-toast';
 
 function CreateProject() {
 
@@ -30,6 +31,7 @@ function CreateProject() {
 
         try{
             await createProject(projectData)
+            toast.success('Project Created')
             confetti()
             setProjectData( {title: '', description: '', due_Date: '', completed: false })
             navigate('/dashboard/projects')
@@ -81,7 +83,7 @@ function CreateProject() {
                 </div>
                 <div className='flex gap-8 items-center '>
 
-                    <button type='submit' className='relative flex justify-center gap-2 items-center group bg-[#137fec] px-5 py-3 rounded-lg shadow-xl cursor-pointer w-[80%]'>
+                    <button disabled={loading} type='submit' className={`relative flex justify-center gap-2 items-center group bg-[#137fec] px-5 py-3 rounded-lg shadow-xl ${loading ? 'opacity-50 cursor-not-allowed ' : 'cursor-pointer'} w-[80%]`}>
                         {loading ?  'Loading...' : 'Create Project'}
                         {loading ? <div className='absolute top-[35%] right-4 animate-spin rounded-full h-4 w-4 border-t-3 border-white'></div> : <div className='group-hover:translate-x-2 duration-200'><ArrowForwardIcon/></div>}
                     </button>

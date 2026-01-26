@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useAuthStore } from '../../store/useAuthStore'
 import { useState } from 'react'
+import toast from 'react-hot-toast';
 
 function Login() {
     const [emailInput, setUserEmail] = useState('')
@@ -17,6 +18,7 @@ function Login() {
         if (emailInput && passwordInput) {
             try{
                 await logIn(emailInput, passwordInput)
+                toast.success('Welcome Back')
                 navigate('/dashboard')
             }catch(err){
                 console.err('Fallo el login')

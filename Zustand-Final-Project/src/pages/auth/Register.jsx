@@ -16,7 +16,9 @@ function Register() {
 
         if (emailInput && passwordInput && nameInput) {
             signUp(emailInput, passwordInput, nameInput)
+            toast.success('Welcome to the team')
             navigate('/login')
+
         } else {
             alert('Fill in all fields')
         }
