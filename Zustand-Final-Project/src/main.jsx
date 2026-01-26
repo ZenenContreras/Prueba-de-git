@@ -8,8 +8,9 @@ import Register from './pages/auth/Register.jsx';
 import ProtetedLayout from './components/layout/ProtetedLayout.jsx'
 import DashBoard from './pages/dashboard/DashBoard.jsx';
 import Projects from './pages/projects/Projects.jsx'
-import Project from './pages/projects/Project.jsx'
+import ProjectDetail from './pages/projects/ProjectDetail.jsx'
 import CreateProject from './pages/projects/CreateProject.jsx'
+import NotFound from './pages/NotFound.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -24,14 +25,13 @@ createRoot(document.getElementById('root')).render(
         </Route>
 
         {/* Rutas Privadas */}
-
         <Route element={<ProtetedLayout />}>
           <Route path='/dashboard' element={<DashBoard />}></Route>
           <Route path='/dashboard/projects' element={<Projects />}></Route>
           <Route path='/dashboard/projects/create' element={<CreateProject />}></Route>
-          <Route path='/dashboard/projects/:id' element={<Project />}></Route>
+          <Route path='/dashboard/projects/:id' element={<ProjectDetail />}></Route>
+          <Route path='*' element={<NotFound/>}></Route>
         </Route>
-
       </Routes>
     </div>
   </BrowserRouter>

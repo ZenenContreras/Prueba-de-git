@@ -4,17 +4,27 @@ import {Link} from 'react-router'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import ProjectSkeleton from './ProjectSkeleton';
 
 function ProjectLayout () {
-    const {getProjects, projects, deleteProject} = useProjectStore()
+    const {getProjects, projects, deleteProject, loading} = useProjectStore()
     
     useEffect(()=>{
          async function fetchProyects(){
              await getProjects()
          }
          fetchProyects()
-     },[])   
-    
+     },[])  
+      
+    if(loading){
+        return (
+            <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols:3 lg:grid-cols-4'>
+                {[1,2,3,4].map((num)=> (
+                    <ProjectSkeleton num={num}/>
+                ))}
+            </div>
+        )
+    }
 
     return (
         <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols:3 lg:grid-cols-4'>
@@ -31,6 +41,7 @@ function ProjectLayout () {
                             <h2 className='uppercase text-sm text-gray-500'>Due Date</h2>
                             <h3 className=' text-sm'>{project.due_date}</h3>
                     </div>
+                    <Link className='px-5 py-3 rounded-lg shadow-xl cursor-pointer bg-[#137fec] text-center' to={`/projects/${project.id}`}> Ver detalles</Link>
                     <button onClick={()=> deleteProject(project.id)} className='px-5 py-3 rounded-lg shadow-xl cursor-pointer bg-red-400'>Delete Proyect</button>
                 </div>
             ))}

@@ -5,7 +5,7 @@ export const useProjectStore = create((set)=>({
 
     projects: [],
     error: null,
-    loading: false,
+    loading: true,
 
     getProjects: async () =>{
         set({loading: true})
