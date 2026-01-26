@@ -8,6 +8,7 @@ import Register from './pages/auth/Register.jsx';
 import ProtetedLayout from './components/layout/ProtetedLayout.jsx'
 import DashBoard from './pages/dashboard/DashBoard.jsx';
 import Projects from './pages/projects/Projects.jsx'
+import Project from './pages/projects/Project.jsx'
 import CreateProject from './pages/projects/CreateProject.jsx'
 
 
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/dashboard' element={<DashBoard />}></Route>
           <Route path='/dashboard/projects' element={<Projects />}></Route>
           <Route path='/dashboard/projects/create' element={<CreateProject />}></Route>
+          <Route path='/dashboard/projects/:id' element={<Project />}></Route>
         </Route>
 
       </Routes>
