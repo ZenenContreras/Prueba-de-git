@@ -41,7 +41,7 @@ function ProjectLayout () {
                             <h2 className='uppercase text-sm text-gray-500'>Due Date</h2>
                             <h3 className=' text-sm'>{project.due_date}</h3>
                     </div>
-                    <Link className='px-5 py-3 rounded-lg shadow-xl cursor-pointer bg-[#137fec] text-center' to={`/projects/${project.id}`}> Ver detalles</Link>
+                    <Link className='px-5 py-3 rounded-lg shadow-xl cursor-pointer bg-[#137fec] text-center' to={`/dashboard/projects/${project.id}`}> Ver detalles</Link>
                     <button onClick={()=> deleteProject(project.id)} className='px-5 py-3 rounded-lg shadow-xl cursor-pointer bg-red-400'>Delete Proyect</button>
                 </div>
             ))}
